@@ -1,10 +1,10 @@
 language: java
 jdk:
-  - oraclejdk8
+  - openjdk8
 sudo: required
 cache:
   directories:
     - $HOME/.m2
 install: true
-before_script: travis_wait 45 ./mvnw install -q -U -DskipTests=true -Dmaven.test.redirectTestOutputToFile=true
-script: ./mvnw install -q -nsu -Dmaven.test.redirectTestOutputToFile=true
+before_script: travis_wait 45 ./mvnw install -q -U -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true -Dmaven.test.redirectTestOutputToFile=true
+script: ./mvnw install -B -nsu -Pstrict -Dmaven.javadoc.skip=true -Dgpg.skip=true -Dmaven.test.redirectTestOutputToFile=true
